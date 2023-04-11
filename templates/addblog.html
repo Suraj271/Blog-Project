@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block title %}
+<title>Dashboard Page</title>
+{% endblock title %}
+
+
+{% block css %}
+{% endblock css %}
+
+
+{% block body %}
+
+<!-- heading  -->
+
+<div class="container bg-secondary text-light p-2 text-center">
+    <h2>Add Blog</h2>
+</div>
+
+<!-- form div addblog  -->
+
+<div class="container bg-secondary text-light my-5 p-2 shadow" id="form-div">
+
+    <form action="{% url 'addblog' %}" method="post">
+        {% csrf_token %}
+
+        <!-- fields  -->
+        {% for i in forms %}
+        <div class="mb-3" >
+            {{i.label_tag}}
+            {{i}}
+        </div>
+
+        {% endfor %}
+
+        
+        <div class="mb-5 text-center">
+            <input type="submit" value="Add Blog" class="btn btn-success">
+        </div>
+
+    </form>
+
+</div>
+
+{% endblock body %}
